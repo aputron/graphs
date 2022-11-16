@@ -1,10 +1,3 @@
-import FlowCal
-import matplotlib.pyplot as plt
-import numpy as np
-import seaborn as sns
-import pandas as pd
-import os
-
 # function to make FACS graphs
 # files: [list] of fcs file paths (str)
 # labels: [list] of Labels for each sample (str)
@@ -41,7 +34,7 @@ def facs_graph(files, labels, colour, y_axis):
     df["Label"]=label
     
     # set figure size
-    fig, ax = plt.subplots(figsize=(5, 15))
+    fig, ax = plt.subplots(figsize=(2.5, 15))
     # set graph styles
     sns.set_style("white")
     sns.set_style("ticks")
@@ -53,17 +46,18 @@ def facs_graph(files, labels, colour, y_axis):
                         element='poly',
                         palette=colour,
                         hue = "Label",
-                        alpha=0.3)
+                        alpha=0.2, legend=False)
     
     # set graph configurations
     graph.set_ylim(1.4, 5000)
     graph.set_xlim(0, 1000)
-    plt.xticks([0, 500, 1000])
+    plt.xticks([500])
+    graph.set(xlabel=None)
     
     # plot the population means on the graph
     for i in range(len(labels)):
-        plt.axhline(mean[i][0], color=colour[i], linestyle=":")
-        
+        plt.axhline(mean[i][0], color=colour[i])
+
     # to label the y axis
     if y_axis == True:
         plt.ylabel("Relative Fluoresence Units (RFU)")
