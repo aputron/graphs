@@ -1,3 +1,10 @@
+import FlowCal
+import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+import pandas as pd
+import os
+
 # function to make FACS graphs
 # files: [list] of fcs file paths (str)
 # labels: [list] of Labels for each sample (str)
